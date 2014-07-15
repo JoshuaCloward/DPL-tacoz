@@ -1,5 +1,5 @@
 <h1>Admin/Menu Items index</h1>
-<%= @menu_items.in_groups_of(4) do |group| %>
+<%= @menu_items.in_groups_of(4, false) do |group| %>
   <div class="row">
     <% group.each do |menu_item| %>
       <div class="col-sm-3">

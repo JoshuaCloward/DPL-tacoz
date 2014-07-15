@@ -2,7 +2,7 @@
 <p class="lead">
   Tacos so Yummy, you'll slap yo mamma!
 </p>
-<%= @items.in_groups_of(4) do |group| %>
+<%= @items.in_groups_of(4, false) do |group| %>
   <div class="row">
     <% group.each do |menu_item| %>
       <div class="col-sm-3">

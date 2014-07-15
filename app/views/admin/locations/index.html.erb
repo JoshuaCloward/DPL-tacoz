@@ -1,0 +1,10 @@
+<h1> Index </h1>
+
+<ul>
+<% @locations.each do |location| %>
+<li>
+<%= link_to location.address, admin_location_path(location.id) %>
+
+</li>
+<% end %>
+</ul>

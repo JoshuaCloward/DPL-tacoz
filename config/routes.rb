@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do  #all routes inside this bloc will have a /admin in front of them.
     get '/' => 'base#index' #base controller could be called anything (except admin)
-
+    resources :locations
     resources :menu_items
   end
 
