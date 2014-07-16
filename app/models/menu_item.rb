@@ -1,4 +1,11 @@
 class MenuItem < ActiveRecord::Base
+  include PgSearch
+
+   multisearchable against: [:name, :description]
+
+   pg_search_scope :search, against: [:name, :description], associated_against: {
+     ingredients: [:name]
+ }
   mount_uploader :picture, MenuItemPictureUploader
   has_many :ingredients
 

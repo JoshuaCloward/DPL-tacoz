@@ -16,11 +16,11 @@ gem 'kaminari'
 gem 'mini_magick'
 gem 'nested_form'
 gem 'pg'
+gem 'pg_search'
 gem 'sass-rails', '~> 4.0.3'
 gem 'thin'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-
 
 #Development Gems
 group :development do

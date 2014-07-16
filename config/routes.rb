@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/contact-submit' => 'site#contact_submit', as: :submit_contact
   resources :menu_items, only: [:index, :show], path: 'our-food'
   resources :locations, only: [:index, :show]
+  get '/search' => 'search_results#index'
 
   get '/our-vegetarian-food' => 'menu_items#vegetarian'
 

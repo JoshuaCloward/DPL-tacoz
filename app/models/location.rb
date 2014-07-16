@@ -1,4 +1,11 @@
 class Location < ActiveRecord::Base
+  include PgSearch
+
+  multisearchable against: [:street_address, :street_address2, :city, :state, :zip]
+
+  pg_search_scope :search, against: [:street_address, :street_address2, :city, :state, :zip], associated_against: {
+    employees: [:name]
+  }
 
   geocoded_by :address
   after_validation :geocode
