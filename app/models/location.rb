@@ -2,6 +2,7 @@ class Location < ActiveRecord::Base
   include PgSearch
 
   multisearchable against: [:street_address, :street_address2, :city, :state, :zip]
+  #  , :employee_names]
 
   pg_search_scope :search, against: [:street_address, :street_address2, :city, :state, :zip], associated_against: {
     employees: [:name]
@@ -26,6 +27,10 @@ class Location < ActiveRecord::Base
 
   def has_blank_attributes(employee_attrs)
     employee_attrs['name'].blank?
+  end
+
+  def employee_names
+    Employee.pluck(name)
   end
 
 end
