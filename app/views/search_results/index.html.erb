@@ -1,37 +1,5 @@
 <h1> Search Results for.. "<%= params[:q] %>" </h1>
 
-<p>Found <%= pluralize(@results.length, 'Result') %>.</p>
-<% @results.each do |result| %>
-  <div class="result">
-    <% if result.class == MenuItem %>
-      <div id="menu-result">
-      <%= link_to(result.name, result) %>
-      <p><%= result.description %></p>
-      </div>
-    <% elsif result.class == Location %>
-      <div id="loc-result">
-      <%= link_to(result.address, result) %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
-
-<% if @menu_item_results.length > 0 %>
-  <p>Found <%= pluralize(@menu_item_results.length, 'Result') %> that match Menu Items.</p>
-  <% @menu_item_results.each do |menu_item| %>
-    <div class="result">
-      <%= link_to(menu_item.name, menu_item) %>
-      <p><%= menu_item.description %></p>
-    </div>
-  <% end %>
-<% end %>
-
-<% if @location_results.length > 0 %>
-  <p> Found <%= pluralize(@location_results.length, 'Result') %> that match Locations.</p>
-  <% @location_results.each do |loc| %>
-    <div class="result">
-      <%= link_to(loc.address, loc) %>
-    </div>
-  <% end %>
+<% @results.results.each do |result| %>
+  <%= link_to(result.name, menu_item_path(result.id)) %>
 <% end %>

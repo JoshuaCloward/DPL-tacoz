@@ -1,12 +1,12 @@
 class MenuItem < ActiveRecord::Base
-  include PgSearch
+  include Elasticsearch::Model
 
-   multisearchable against: [:name, :description]
-     #, :ingredient_names]
+  mapping do
+    indexes :name, boost: 10, type: 'string'
+    indexes :description, type: 'string'
+  end
 
-   pg_search_scope :search, against: [:name, :description], associated_against: {
-     ingredients: [:name]
- }
+
   mount_uploader :picture, MenuItemPictureUploader
   has_many :ingredients
 
